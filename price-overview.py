@@ -15,14 +15,14 @@ inky_display.set_border(inky_display.WHITE)
 currentDateAndTime = datetime.now()
 price = ""
 
-res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/2023/10-20_NO1.json")
+res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/{}/{}-{}_NO1.json".format(currentDateAndTime.year, currentDateAndTime.month, currentDateAndTime.day))
 
 if res.status_code == 200:
     j = json.loads(res.text)
     print(currentDateAndTime.hour)
-    price = "{:.9f}".format(j[currentDateAndTime.hour]["NOK_per_kWh"])
+    price = "{:.3f} øre/kWh".format(j[currentDateAndTime.hour]["NOK_per_kWh"])
 else:
-    price = "Failed"
+    price = "Kunne ikke hente pris"
 
 img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT))
 draw = ImageDraw.Draw(img)
