@@ -18,7 +18,7 @@ res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/2023/10-20_NO
 if res.status_code == 200:
     j = json.loads(res.text)
     print(j)
-    price = "Success"
+    price = j[0]["NOK_per_kWh"]
 else:
     price = "Failed"
 
