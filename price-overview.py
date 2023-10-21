@@ -17,6 +17,8 @@ price = ""
 
 res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/{}/{}-{}_NO1.json".format(currentDateAndTime.year, currentDateAndTime.month, currentDateAndTime.day))
 
+print("https://www.hvakosterstrommen.no/api/v1/prices/{}/{}-{}_NO1.json".format(currentDateAndTime.year, currentDateAndTime.month, currentDateAndTime.day))
+
 if res.status_code == 200:
     j = json.loads(res.text)
     print(currentDateAndTime.hour)
