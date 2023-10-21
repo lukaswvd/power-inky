@@ -33,5 +33,5 @@ x = (inky_display.WIDTH / 2) - (w / 2)
 y = (inky_display.HEIGHT / 2) - (h / 2)
 
 draw.text((x, y), price, inky_display.RED, font)
-inky_display.set_image(Image.open("./resources/NO1.png").convert('P'))
+inky_display.set_image(img)
 inky_display.show()
