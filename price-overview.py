@@ -2,6 +2,7 @@ import json
 from inky.auto import auto
 from PIL import Image, ImageFont, ImageDraw
 from font_fredoka_one import FredokaOne
+from datetime import datetime
 
 try:
     import requests
@@ -11,13 +12,14 @@ except ImportError:
 inky_display = auto()
 inky_display.set_border(inky_display.WHITE)
 
+currentDateAndTime = datetime.now()
 price = ""
 
 res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/2023/10-20_NO1.json")
 
 if res.status_code == 200:
     j = json.loads(res.text)
-    price = "{:.2f}".format(j[0]["NOK_per_kWh"])
+    price = "{:.2f}".format(j[currentDateAndTime.hour]["NOK_per_kWh"])
 else:
     price = "Failed"
 
