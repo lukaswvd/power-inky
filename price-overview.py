@@ -26,6 +26,8 @@ else:
 img = Image.new("P", (inky_display.WIDTH, inky_display.HEIGHT))
 draw = ImageDraw.Draw(img)
 
+
+
 font = ImageFont.truetype(FredokaOne, 22)
 
 w, h = font.getsize(price)
@@ -34,4 +36,5 @@ y = (inky_display.HEIGHT / 2) - (h / 2)
 
 draw.text((x, y), price, inky_display.RED, font)
 inky_display.set_image(img)
+inky_display.set_image(Image.open("./resources/NO1.png"))
 inky_display.show()
