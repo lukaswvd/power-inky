@@ -25,6 +25,7 @@ res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/{}/{}-{}_NO1.
 
 if res.status_code == 200:
     j = json.loads(res.text)
+    print(j[currentDateAndTime.hour]["NOK_per_kWh"])
     price = "{:.0f} øre/kWh".format(j[currentDateAndTime.hour]["NOK_per_kWh"])
 else:
     price = "Kunne ikke hente pris"
