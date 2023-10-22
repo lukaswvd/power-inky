@@ -13,7 +13,8 @@ draw = ImageDraw.Draw(img)
 
 font = ImageFont.truetype(FredokaOne, 22)
 
-draw.text((72, 34), "62 øre/kWh", inky_display.BLACK, font=font)
+w, h = draw.textsize("62 øre/kWh")
+draw.text((72,(104-h)/2), "62 øre/kWh", inky_display.BLACK, font=font)
 
 inky_display.set_image(img)
 inky_display.show()
