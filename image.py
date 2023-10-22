@@ -22,7 +22,7 @@ res = requests.get("https://www.hvakosterstrommen.no/api/v1/prices/{}/{}-{}_NO1.
 
 if res.status_code == 200:
     j = json.loads(res.text)
-    price = "{:.3f} øre/kWh".format(j[currentDateAndTime.hour]["NOK_per_kWh"])
+    price = "{:.0f} øre/kWh".format(j[currentDateAndTime.hour]["NOK_per_kWh"])
 else:
     price = "Kunne ikke hente pris"
 
@@ -36,8 +36,6 @@ draw.text((72, y), price, inky_display.BLACK, font=font)
 
 img = Image.open(os.path.join(PATH, "resources/NO1.png"))
 draw = ImageDraw.Draw(img)
-
-
 
 inky_display.set_image(img)
 inky_display.show()
