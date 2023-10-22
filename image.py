@@ -15,6 +15,9 @@ PATH = os.path.dirname(__file__)
 inky_display = InkyPHAT("red")
 inky_display.set_border(inky_display.WHITE)
 
+img = Image.open(os.path.join(PATH, "resources/NO1.png"))
+draw = ImageDraw.Draw(img)
+
 currentDateAndTime = datetime.now()
 price = ""
 
@@ -33,9 +36,6 @@ w, h = font.getsize(price)
 y = (inky_display.HEIGHT / 2) - (h / 2)
 
 draw.text((72, y), price, inky_display.BLACK, font=font)
-
-img = Image.open(os.path.join(PATH, "resources/NO1.png"))
-draw = ImageDraw.Draw(img)
 
 inky_display.set_image(img)
 inky_display.show()
